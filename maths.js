@@ -1,6 +1,7 @@
 var answer;
 var score = 0;
 var prediction;
+var previousBgs = [];
 var backgroundImage = "";
 
 function nextQuestion() {
@@ -17,8 +18,8 @@ function checkAnswer() {
   
   if (prediction == answer) {
     score++;
-    console.log(`Correct! Score: ${score}`);
     if (score <= 5) {
+      previousBgs.push(backgroundImage);
       backgroundImage = `url('images/bg${score}.svg')`;
       document.body.style.backgroundImage = backgroundImage;
     } else {
@@ -26,6 +27,7 @@ function checkAnswer() {
         "Well done! Your your monster is fully grown! Want to start again?"
       );
       score = 0;
+      previousBgs = [];
       backgroundImage = "";
       document.body.style.backgroundImage = backgroundImage;
     }
@@ -39,7 +41,8 @@ function checkAnswer() {
       it is ${answer}! Retry and make sure to write the number neater next time!`
     );
     setTimeout(function () {
-      backgroundImage = "";
+      backgroundImage = previousBgs[previousBgs.length - 1];
+      previousBgs.pop();
       document.body.style.backgroundImage = backgroundImage;
     }, 1200);
   }
