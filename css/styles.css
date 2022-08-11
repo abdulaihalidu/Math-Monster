@@ -4,7 +4,7 @@ body {
   width: 100%;
   background-position: top;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 300px 300px;
 }
 
 h1,
