@@ -1,7 +1,7 @@
 var answer;
 var score = 0;
 var prediction;
-var backgroundImages = [];
+var backgroundImage = "";
 
 function nextQuestion() {
   const n1 = Math.floor(Math.random() * 5);
@@ -14,35 +14,33 @@ function nextQuestion() {
 
 function checkAnswer() {
   prediction = predictImage();
-  // console.log(`Answer: ${answer}, prediction: ${prediction}`);
-
+  
   if (prediction == answer) {
     score++;
     console.log(`Correct! Score: ${score}`);
-    if (score <= 6) {
-      backgroundImages.push(`url('images/bg${score}.svg')`);
-      document.body.style.backgroundImage = backgroundImages;
+    if (score <= 5) {
+      backgroundImage = `url('images/bg${score}.svg')`;
+      document.body.style.backgroundImage = backgroundImage;
     } else {
       alert(
         "Well done! Your your monster is fully grown! Want to start again?"
       );
       score = 0;
-      backgroundImages = [];
-      document.body.style.backgroundImage = backgroundImages;
+      backgroundImage = "";
+      document.body.style.backgroundImage = backgroundImage;
     }
   } else {
     if (score != 0) {
       score--;
     }
-    console.log(`Wrong. Score ${score}`);
 
     alert(
-      `Oops! Seems like you guessed the answer to be ${answer} but our monster says
-      it is ${prediction}! Retry and make sure to write the number neater next time!`
+      `Oops! Seems like you guessed the answer to be ${prediction} but our monster says
+      it is ${answer}! Retry and make sure to write the number neater next time!`
     );
     setTimeout(function () {
-      backgroundImages.pop();
-      document.body.style.backgroundImage = backgroundImages;
-    }, 1000);
+      backgroundImage = "";
+      document.body.style.backgroundImage = backgroundImage;
+    }, 1200);
   }
 }
