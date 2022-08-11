@@ -97,7 +97,6 @@ function predictImage() {
   const X = tf.tensor([pixelValues]);
 
   const result = model.predict(X);
-  result.print();
   const output = result.dataSync()[0];
 
   // Cleanup
