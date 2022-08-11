@@ -44,6 +44,6 @@ function checkAnswer() {
       backgroundImage = previousBgs[previousBgs.length - 1];
       previousBgs.pop();
       document.body.style.backgroundImage = backgroundImage;
-    }, 1200);
+    }, 1000);
   }
 }
